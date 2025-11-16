@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cynthia's Brew Corner - Kagugu's Favorite Coffee Spot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #3E2723;
+            background-color: #F5F5DC;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(111, 78, 55, 0.95), rgba(111, 78, 55, 0.95));
+            color: white;
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #F5F5DC;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: -3px;
+            color: #C56A2F;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: #C56A2F;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 15px 80px;
+            margin-top: 50px;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #C56A2F;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 3px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background: #A55229;
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 15px;
+        }
+
+        /* Section Styles */
+        section {
+            margin: 30px 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #6F4E37;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #C56A2F;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #C56A2F;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .owner-photo {
+            background: linear-gradient(rgba(111, 78, 55, 0.8), rgba(111, 78, 55, 0.8)), url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2061&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 350px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .owner-image-container {
+            text-align: center;
+            color: white;
+        }
+
+        .owner-icon {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            color: #F5F5DC;
+        }
+
+        .owner-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            font-weight: bold;
+        }
+
+        .owner-title {
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Menu Section - INLINE CARDS */
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-3px);
+        }
+
+        .menu-category h3 {
+            color: #6F4E37;
+            border-bottom: 2px solid #C56A2F;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .item-name {
+            flex: 1;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            color: #C56A2F;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* Online Ordering System */
+        .ordering-system {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-top: 1.5rem;
+        }
+
+        .order-form {
+            display: grid;
+            gap: 1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #6F4E37;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #C56A2F;
+            outline: none;
+        }
+
+        .menu-selection {
+            display: grid;
+            gap: 0.8rem;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .menu-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .menu-option:hover {
+            border-color: #C56A2F;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #6F4E37;
+            font-size: 0.85rem;
+        }
+
+        .item-price {
+            color: #C56A2F;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-btn {
+            background: #6F4E37;
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .quantity-btn:hover {
+            background: #C56A2F;
+        }
+
+        .quantity-display {
+            min-width: 25px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .order-summary {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 2px solid #e0e0e0;
+        }
+
+        .order-summary h4 {
+            color: #6F4E37;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Payment Options */
+        .payment-options {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .payment-method {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .payment-method:hover {
+            background: #e9ecef;
+        }
+
+        .payment-method input {
+            margin-right: 8px;
+            transform: scale(1.1);
+        }
+
+        .payment-form {
+            display: none;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 2px solid #e0e0e0;
+        }
+
+        /* Location Section */
+        .location-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .hours, .contact {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .hours h3, .contact h3 {
+            color: #6F4E37;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .contact-item:hover {
+            background: #f8f9fa;
+        }
+
+        .contact-item strong {
+            min-width: 70px;
+            margin-right: 8px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item span {
+            position: relative;
+            z-index: 2;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #3E2723, #5D4037);
+            color: #F5F5DC;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #F5F5DC;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #C56A2F;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.3rem 0.8rem;
+            }
+
+            .about-content, .location-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .menu-option {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .quantity-selector {
+                align-self: flex-end;
+            }
+
+            .container {
+                padding: 30px 10px;
+            }
+
+            .menu-category {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 10px 60px;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 5px auto;
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Cynthia's Brew Corner</h1>
+                <div class="tagline">Personal & Quality Coffee</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#order">Order Online</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Welcome to Cynthia's Brew Corner</h2>
+        <p>Where every cup tells a story and quality is our promise</p>
+        <a href="#menu" class="cta-button">View Our Menu</a>
+        <a href="#order" class="cta-button">Order Online</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>Our Story</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Hello, I'm Cynthia!</h3>
+                <p>Welcome to my little corner of Kagugu! As the owner of Cynthia's Brew Corner, I've poured my heart into creating a space where coffee lovers can enjoy truly exceptional brews in a warm, welcoming atmosphere.</p>
+                <p>Every coffee bean is carefully selected from local Rwandan farms, every drink crafted with attention to detail, and every customer treated like family. That's the Brew Corner promise.</p>
+                <p>Come visit us and experience the difference that personal touch makes!</p>
+            </div>
+            <div class="owner-photo">
+                <div class="owner-image-container">
+                    <div class="owner-icon">☕</div>
+                    <div class="owner-name">Cynthia Tuyikunde</div>
+                    <div class="owner-title">Owner & Coffee Specialist</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section - INLINE CARDS -->
+    <section id="menu" class="container">
+        <h2>Our Complete Menu</h2>
+        <div class="menu-grid">
+            <!-- Coffee Drinks -->
+            <div class="menu-category">
+                <h3>☕ Coffee & Espresso</h3>
+                <div class="menu-item">
+                    <span class="item-name">Rwanda Pure Arabica</span>
+                    <span class="price">2,500 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Espresso</span>
+                    <span class="price">2,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Cappuccino</span>
+                    <span class="price">3,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Latte</span>
+                    <span class="price">3,200 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Americano</span>
+                    <span class="price">2,800 RWF</span>
+                </div>
+            </div>
+
+            <!-- Tea & Specialties -->
+            <div class="menu-category">
+                <h3>🍵 Tea & Special Drinks</h3>
+                <div class="menu-item">
+                    <span class="item-name">Traditional African Tea</span>
+                    <span class="price">1,800 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Spiced Chai</span>
+                    <span class="price">2,200 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Hot Chocolate</span>
+                    <span class="price">2,500 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Iced Coffee</span>
+                    <span class="price">3,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Fresh Passion Juice</span>
+                    <span class="price">2,000 RWF</span>
+                </div>
+            </div>
+
+            <!-- African Main Dishes -->
+            <div class="menu-category">
+                <h3>🍛 African Main Dishes</h3>
+                <div class="menu-item">
+                    <span class="item-name">Ugali with Sukuma Wiki</span>
+                    <span class="price">4,500 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Nyama Choma</span>
+                    <span class="price">6,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Matoke</span>
+                    <span class="price">4,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Ibiryo Platter</span>
+                    <span class="price">5,500 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Beef Brochettes</span>
+                    <span class="price">4,200 RWF</span>
+                </div>
+            </div>
+
+            <!-- Snacks & Pastries -->
+            <div class="menu-category">
+                <h3>🥐 Snacks & Pastries</h3>
+                <div class="menu-item">
+                    <span class="item-name">Mandazi</span>
+                    <span class="price">1,000 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Samosa</span>
+                    <span class="price">800 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Chapati</span>
+                    <span class="price">700 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Croissant</span>
+                    <span class="price">1,500 RWF</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">Muffin</span>
+                    <span class="price">1,800 RWF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Ordering System -->
+    <section id="order" class="container">
+        <h2>Order Online</h2>
+        <div class="ordering-system">
+            <form class="order-form" id="orderForm">
+                <div class="form-group">
+                    <label for="customerName">Your Name *</label>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number *</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderType">Order Type *</label>
+                    <select id="orderType" name="orderType" required>
+                        <option value="">Select order type...</option>
+                        <option value="pickup">Pickup at Shop</option>
+                        <option value="delivery">Delivery (Kagugu area)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Items:</label>
+                    <div class="menu-selection" id="menuSelection">
+                        <!-- Menu items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="orderSummary">No items selected</div>
+                    <div id="totalAmount" style="font-weight: bold; margin-top: 10px; font-size: 1.1rem; color: #C56A2F;">Total: 0 RWF</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialInstructions">Special Instructions</label>
+                    <textarea id="specialInstructions" name="specialInstructions" rows="2" placeholder="Any special requests..."></textarea>
+                </div>
+
+                <button type="button" onclick="placeOrder()" class="cta-button" style="width: 100%; font-size: 1rem; padding: 12px;">📱 Place Order via WhatsApp</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Location & Hours -->
+    <section id="location" class="container">
+        <h2>Visit Us</h2>
+        <div class="location-info">
+            <div class="hours">
+                <h3>🕒 Opening Hours</h3>
+                <p><strong>Monday - Friday:</strong> 6:30 AM - 8:00 PM</p>
+                <p><strong>Saturday:</strong> 7:00 AM - 9:00 PM</p>
+                <p><strong>Sunday:</strong> 8:00 AM - 6:00 PM</p>
+            </div>
+            <div class="contact">
+                <h3>📞 Contact</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📍 Address:</strong> Kagugu, Kigali
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Phone:</strong> <a href="tel:+250791255162" style="color: #C56A2F; text-decoration: none;">0791255162</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong> <a href="mailto:tuyikundecynthia@gmail.com" style="color: #C56A2F; text-decoration: none;">tuyikundecynthia@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="container">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                <span>Cozy Interior</span>
+            </div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                <span>Coffee Preparation</span>
+            </div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                <span>African Cuisine</span>
+            </div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80');">
+                <span>Happy Customers</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>Cynthia's Brew Corner</h3>
+            <p>Kagugu, Kigali | Authentic African Coffee & Cuisine</p>
+            
+            <div class="social-links">
+                <a href="#">Facebook</a> | 
+                <a href="#">Instagram</a> | 
+                <a href="#">Twitter</a>
+            </div>
+            
+            <div class="contact-info">
+                <p>📞 0791255162 | 📧 tuyikundecynthia@gmail.com</p>
+            </div>
+            
+            <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">&copy; 2024 Cynthia's Brew Corner. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simplified menu data
+        const menuItems = [
+            // Coffee & Espresso
+            { id: 'arabica', name: 'Rwanda Pure Arabica', price: 2500, category: 'Coffee & Espresso' },
+            { id: 'espresso', name: 'Espresso', price: 2000, category: 'Coffee & Espresso' },
+            { id: 'cappuccino', name: 'Cappuccino', price: 3000, category: 'Coffee & Espresso' },
+            { id: 'latte', name: 'Latte', price: 3200, category: 'Coffee & Espresso' },
+            { id: 'americano', name: 'Americano', price: 2800, category: 'Coffee & Espresso' },
+            
+            // Tea & Special Drinks
+            { id: 'africantea', name: 'Traditional African Tea', price: 1800, category: 'Tea & Special Drinks' },
+            { id: 'chai', name: 'Spiced Chai', price: 2200, category: 'Tea & Special Drinks' },
+            { id: 'hotchocolate', name: 'Hot Chocolate', price: 2500, category: 'Tea & Special Drinks' },
+            { id: 'icedcoffee', name: 'Iced Coffee', price: 3000, category: 'Tea & Special Drinks' },
+            { id: 'passionjuice', name: 'Fresh Passion Juice', price: 2000, category: 'Tea & Special Drinks' },
+            
+            // African Main Dishes
+            { id: 'ugali', name: 'Ugali with Sukuma Wiki', price: 4500, category: 'African Main Dishes' },
+            { id: 'nyamachoma', name: 'Nyama Choma', price: 6000, category: 'African Main Dishes' },
+            { id: 'matoke', name: 'Matoke', price: 4000, category: 'African Main Dishes' },
+            { id: 'ibiryo', name: 'Ibiryo Platter', price: 5500, category: 'African Main Dishes' },
+            { id: 'brochettes', name: 'Beef Brochettes', price: 4200, category: 'African Main Dishes' },
+            
+            // Snacks & Pastries
+            { id: 'mandazi', name: 'Mandazi', price: 1000, category: 'Snacks & Pastries' },
+            { id: 'samosa', name: 'Samosa', price: 800, category: 'Snacks & Pastries' },
+            { id: 'chapati', name: 'Chapati', price: 700, category: 'Snacks & Pastries' },
+            { id: 'croissant', name: 'Croissant', price: 1500, category: 'Snacks & Pastries' },
+            { id: 'muffin', name: 'Muffin', price: 1800, category: 'Snacks & Pastries' }
+        ];
+
+        // Order tracking
+        let orderQuantities = {};
+        menuItems.forEach(item => {
+            orderQuantities[item.id] = 0;
+        });
+
+        // Initialize menu selection
+        function initializeMenuSelection() {
+            const menuSelection = document.getElementById('menuSelection');
+            let currentCategory = '';
+            
+            menuItems.forEach(item => {
+                if (item.category !== currentCategory) {
+                    currentCategory = item.category;
+                    const categoryHeader = document.createElement('div');
+                    categoryHeader.style.gridColumn = '1 / -1';
+                    categoryHeader.style.fontWeight = 'bold';
+                    categoryHeader.style.color = '#6F4E37';
+                    categoryHeader.style.marginTop = '10px';
+                    categoryHeader.style.marginBottom = '5px';
+                    categoryHeader.style.borderBottom = '2px solid #C56A2F';
+                    categoryHeader.style.paddingBottom = '5px';
+                    categoryHeader.style.fontSize = '1rem';
+                    categoryHeader.textContent = item.category;
+                    menuSelection.appendChild(categoryHeader);
+                }
+                
+                const menuOption = document.createElement('div');
+                menuOption.className = 'menu-option';
+                menuOption.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-price">${item.price.toLocaleString()} RWF</div>
+                    </div>
+                    <div class="quantity-selector">
+                        <button type="button" class="quantity-btn" onclick="decreaseQuantity('${item.id}')">-</button>
+                        <span class="quantity-display" id="${item.id}-quantity">0</span>
+                        <button type="button" class="quantity-btn" onclick="increaseQuantity('${item.id}')">+</button>
+                    </div>
+                `;
+                menuSelection.appendChild(menuOption);
+            });
+        }
+
+        // Quantity functions
+        function increaseQuantity(itemId) {
+            orderQuantities[itemId]++;
+            document.getElementById(`${itemId}-quantity`).textContent = orderQuantities[itemId];
+            updateOrderSummary();
+        }
+
+        function decreaseQuantity(itemId) {
+            if (orderQuantities[itemId] > 0) {
+                orderQuantities[itemId]--;
+                document.getElementById(`${itemId}-quantity`).textContent = orderQuantities[itemId];
+                updateOrderSummary();
+            }
+        }
+
+        // Update order summary
+        function updateOrderSummary() {
+            const orderSummary = document.getElementById('orderSummary');
+            const totalAmount = document.getElementById('totalAmount');
+            
+            let summaryHTML = '';
+            let total = 0;
+            let hasItems = false;
+            
+            menuItems.forEach(item => {
+                if (orderQuantities[item.id] > 0) {
+                    hasItems = true;
+                    const itemTotal = item.price * orderQuantities[item.id];
+                    total += itemTotal;
+                    summaryHTML += `
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem;">
+                            <span>${item.name} x${orderQuantities[item.id]}</span>
+                            <span style="font-weight: bold;">${itemTotal.toLocaleString()} RWF</span>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (!hasItems) {
+                orderSummary.innerHTML = '<div style="text-align: center; color: #666; font-style: italic;">No items selected</div>';
+                totalAmount.textContent = 'Total: 0 RWF';
+            } else {
+                orderSummary.innerHTML = summaryHTML;
+                totalAmount.textContent = `Total: ${total.toLocaleString()} RWF`;
+            }
+        }
+
+        // WhatsApp Order Function
+        function placeOrder() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const orderType = document.getElementById('orderType').value;
+            const instructions = document.getElementById('specialInstructions').value;
+            
+            // Validate required fields
+            if (!name || !phone || !orderType) {
+                alert('Please fill in all required fields: Name, Phone, and Order Type');
+                return;
+            }
+            
+            let total = 0;
+            let hasItems = false;
+            let orderItemsText = '';
+            
+            // Build order items text
+            menuItems.forEach(item => {
+                if (orderQuantities[item.id] > 0) {
+                    hasItems = true;
+                    const itemTotal = item.price * orderQuantities[item.id];
+                    total += itemTotal;
+                    orderItemsText += `• ${item.name} x${orderQuantities[item.id]} - ${itemTotal.toLocaleString()} RWF\n`;
+                }
+            });
+            
+            if (!hasItems) {
+                alert('Please select at least one item from the menu.');
+                return;
+            }
+            
+            // Build the complete order message
+            const message = `Hello Cynthia! I'd like to place an order:\n\n` +
+                          `*Name:* ${name}\n` +
+                          `*Phone:* ${phone}\n` +
+                          `*Order Type:* ${orderType}\n\n` +
+                          `*Order Items:*\n${orderItemsText}\n` +
+                          `*Total Amount:* ${total.toLocaleString()} RWF\n` +
+                          `*Special Instructions:* ${instructions || 'None'}\n\n` +
+                          `Thank you!`;
+            
+            // Encode the message for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/250791255162?text=${encodedMessage}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form after successful order
+            resetOrderForm();
+        }
+
+        // Reset order form
+        function resetOrderForm() {
+            document.getElementById('orderForm').reset();
+            menuItems.forEach(item => {
+                orderQuantities[item.id] = 0;
+                document.getElementById(`${item.id}-quantity`).textContent = '0';
+            });
+            updateOrderSummary();
+        }
+
+        // Initialize the menu when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMenuSelection();
+            updateOrderSummary();
+        });
+    </script>
+</body>
+</html>
